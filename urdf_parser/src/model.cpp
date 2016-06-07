@@ -39,6 +39,9 @@
 #include <console_bridge/console.h>
 #include <fstream>
 
+using std::cout;
+using std::endl;
+
 namespace urdf{
 
 bool parseMaterial(Material &material, TiXmlElement *config, bool only_name_is_ok);
@@ -61,11 +64,14 @@ ModelInterfaceSharedPtr  parseURDFFile(const std::string &path)
 
 ModelInterfaceSharedPtr  parseURDF(const std::string &xml_string)
 {
+  cout << "1" << endl;
   ModelInterfaceSharedPtr model(new ModelInterface);
+cout << "2" << endl;
   model->clear();
-
+cout << "3" << endl;
   TiXmlDocument xml_doc;
   xml_doc.Parse(xml_string.c_str());
+  cout << "4" << endl;
   if (xml_doc.Error())
   {
     CONSOLE_BRIDGE_logError(xml_doc.ErrorDesc());
